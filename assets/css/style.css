@@ -1,0 +1,441 @@
+/* =============================================
+   SupplierHub - Custom CSS Theme (Shopee Style)
+   Chỉ override màu sắc và hiệu ứng cơ bản
+   Toàn bộ layout dùng Bootstrap 5
+   ============================================= */
+
+/* --- Google Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap&subset=vietnamese');
+
+/* === BIẾN MÀU SHOPEE === */
+:root {
+    --shopee-primary: #EE4D2D;
+    --shopee-primary-dark: #D73211;
+    --shopee-gradient: linear-gradient(135deg, #F53D2D, #FF6633);
+    --shopee-bg: #F5F5F5;
+    --shopee-card: #FFFFFF;
+    --shopee-text: #333333;
+    --shopee-text-light: #757575;
+    --shopee-success: #26AA99;
+    --shopee-warning: #FFBF00;
+    --shopee-danger: #D63031;
+    --shopee-border: #E8E8E8;
+    --sidebar-width: 260px;
+}
+
+/* === RESET CƠ BẢN === */
+body {
+    font-family: 'Be Vietnam Pro', 'Inter', sans-serif;
+    background-color: var(--shopee-bg);
+    color: var(--shopee-text);
+    font-size: 14px;
+}
+
+a {
+    color: var(--shopee-primary);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--shopee-primary-dark);
+}
+
+/* === SIDEBAR === */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: #FFFFFF;
+    border-right: 1px solid var(--shopee-border);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-brand {
+    padding: 20px;
+    background: var(--shopee-gradient);
+    color: #fff;
+    text-align: center;
+}
+.sidebar-brand h4 {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.sidebar-brand small {
+    opacity: 0.8;
+    font-size: 12px;
+}
+
+.sidebar-menu {
+    padding: 15px 0;
+    list-style: none;
+    margin: 0;
+}
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--shopee-text);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+.sidebar-menu li a i {
+    width: 22px;
+    margin-right: 12px;
+    text-align: center;
+    font-size: 16px;
+    color: var(--shopee-text-light);
+    transition: color 0.2s;
+}
+.sidebar-menu li a:hover {
+    background: #FFF5F2;
+    color: var(--shopee-primary);
+    border-left-color: var(--shopee-primary);
+}
+.sidebar-menu li a:hover i {
+    color: var(--shopee-primary);
+}
+.sidebar-menu li a.active {
+    background: #FFF0ED;
+    color: var(--shopee-primary);
+    border-left-color: var(--shopee-primary);
+    font-weight: 600;
+}
+.sidebar-menu li a.active i {
+    color: var(--shopee-primary);
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: var(--shopee-border);
+    margin: 10px 20px;
+}
+
+.sidebar-heading {
+    padding: 10px 20px 5px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--shopee-text-light);
+    letter-spacing: 1px;
+}
+
+/* === MAIN CONTENT === */
+.main-content {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+}
+
+/* === TOPBAR === */
+.topbar {
+    background: #FFFFFF;
+    padding: 12px 25px;
+    border-bottom: 1px solid var(--shopee-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.topbar-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--shopee-text);
+    margin: 0;
+}
+
+.topbar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.topbar-user .user-name {
+    font-weight: 500;
+    font-size: 14px;
+}
+.topbar-user .user-role {
+    font-size: 12px;
+    color: var(--shopee-text-light);
+}
+
+/* === BUTTONS (Override Bootstrap) === */
+.btn-shopee {
+    background: var(--shopee-gradient);
+    color: #fff;
+    border: none;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.btn-shopee:hover {
+    background: linear-gradient(135deg, #D73211, #EE4D2D);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(238, 77, 45, 0.35);
+}
+
+.btn-outline-shopee {
+    color: var(--shopee-primary);
+    border: 1px solid var(--shopee-primary);
+    background: transparent;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+.btn-outline-shopee:hover {
+    background: var(--shopee-primary);
+    color: #fff;
+}
+
+/* === CARDS === */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s;
+}
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Stat cards trên Dashboard */
+.stat-card {
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+.stat-card .stat-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 48px;
+    opacity: 0.2;
+}
+.stat-card .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.stat-card .stat-label {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.stat-card.bg-primary-gradient {
+    background: var(--shopee-gradient);
+}
+.stat-card.bg-success-gradient {
+    background: linear-gradient(135deg, #26AA99, #2ED8C3);
+}
+.stat-card.bg-warning-gradient {
+    background: linear-gradient(135deg, #F2994A, #F2C94C);
+}
+.stat-card.bg-info-gradient {
+    background: linear-gradient(135deg, #2F80ED, #56CCF2);
+}
+
+/* === TABLE === */
+.table thead th {
+    background: #FAFAFA;
+    border-bottom: 2px solid var(--shopee-border);
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--shopee-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px;
+    white-space: nowrap;
+}
+.table td {
+    padding: 12px;
+    vertical-align: middle;
+    font-size: 14px;
+}
+.table tbody tr {
+    transition: background 0.15s;
+}
+.table tbody tr:hover {
+    background: #FFF5F2;
+}
+
+/* === BADGES === */
+.badge {
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* === PAGINATION === */
+.pagination .page-link {
+    color: var(--shopee-primary);
+    border-color: var(--shopee-border);
+    font-size: 14px;
+}
+.pagination .page-item.active .page-link {
+    background: var(--shopee-primary);
+    border-color: var(--shopee-primary);
+}
+.pagination .page-link:hover {
+    background: #FFF0ED;
+    color: var(--shopee-primary-dark);
+}
+
+/* === FORM INPUTS === */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--shopee-primary);
+    box-shadow: 0 0 0 0.2rem rgba(238, 77, 45, 0.15);
+}
+
+/* === STAR RATING === */
+.star-rating {
+    color: #FFB300;
+    font-size: 16px;
+}
+.star-rating .empty {
+    color: #DDD;
+}
+
+/* === SEARCH BOX === */
+.search-box {
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+/* === CONTENT AREA === */
+.content-area {
+    padding: 25px;
+}
+
+/* === LOGIN PAGE === */
+.login-page {
+    min-height: 100vh;
+    background: var(--shopee-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-card {
+    width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.login-header {
+    background: var(--shopee-gradient);
+    padding: 30px;
+    text-align: center;
+    color: #fff;
+}
+.login-header h2 {
+    font-weight: 700;
+    margin: 10px 0 5px;
+}
+.login-body {
+    padding: 30px;
+}
+
+/* === TIMELINE (Purchase Order) === */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--shopee-border);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--shopee-border);
+    border: 2px solid #fff;
+}
+.timeline-item.active::before {
+    background: var(--shopee-primary);
+}
+.timeline-item.completed::before {
+    background: var(--shopee-success);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .topbar {
+        padding: 12px 15px;
+    }
+    .content-area {
+        padding: 15px;
+    }
+    .stat-card .stat-value {
+        font-size: 22px;
+    }
+}
+
+/* === ACTION BUTTONS IN TABLE === */
+.btn-action {
+    padding: 4px 8px;
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+/* === EMPTY STATE === */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--shopee-text-light);
+}
+.empty-state i {
+    font-size: 60px;
+    margin-bottom: 15px;
+    opacity: 0.3;
+}
+
+/* === PRINT STYLES === */
+@media print {
+    .sidebar, .topbar, .btn, .pagination, .search-box {
+        display: none !important;
+    }
+    .main-content {
+        margin-left: 0 !important;
+    }
+}

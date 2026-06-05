@@ -1,15 +1,11 @@
--- =============================================
 -- SupplierHub - Stored Procedures
--- =============================================
 
 USE supplierhub;
 
 DELIMITER //
 
--- =============================================
 -- SP1: Tính lại tổng tiền đơn hàng
 -- Gọi sau khi thêm/sửa/xóa item trong đơn
--- =============================================
 CREATE PROCEDURE sp_recalculate_order_total(IN p_order_id INT)
 BEGIN
     UPDATE purchase_orders
@@ -21,10 +17,8 @@ BEGIN
     WHERE id = p_order_id;
 END //
 
--- =============================================
 -- SP2: Cập nhật rating trung bình của NCC
 -- Gọi sau khi thêm/sửa đánh giá
--- =============================================
 CREATE PROCEDURE sp_update_supplier_rating(IN p_supplier_id INT)
 BEGIN
     UPDATE suppliers
@@ -38,10 +32,8 @@ BEGIN
     WHERE id = p_supplier_id;
 END //
 
--- =============================================
 -- SP3: Nhận hàng - Cập nhật tồn kho (Transaction)
 -- Đảm bảo data integrity khi nhận hàng
--- =============================================
 CREATE PROCEDURE sp_receive_order(
     IN p_order_id INT,
     IN p_user_id INT
@@ -99,10 +91,8 @@ BEGIN
     COMMIT;
 END //
 
--- =============================================
 -- SP4: Thống kê dashboard
 -- Trả về các số liệu tổng quan
--- =============================================
 CREATE PROCEDURE sp_dashboard_stats()
 BEGIN
     -- Tổng NCC active
@@ -159,10 +149,8 @@ BEGIN
     LIMIT 10;
 END //
 
--- =============================================
 -- SP5: Tạo mã đơn hàng tự động
 -- Format: PO-YYYYMMDD-XXX
--- =============================================
 CREATE PROCEDURE sp_generate_order_code(OUT p_code VARCHAR(20))
 BEGIN
     DECLARE v_count INT;

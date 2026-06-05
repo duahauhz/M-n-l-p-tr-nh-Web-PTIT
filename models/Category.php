@@ -19,7 +19,7 @@ class Category {
                 (SELECT COUNT(*) FROM products WHERE category_id = c.id) as product_count
                 FROM categories c
                 LEFT JOIN categories p ON c.parent_id = p.id
-                ORDER BY c.parent_id IS NULL DESC, c.sort_order, c.name";
+                ORDER BY COALESCE(p.sort_order, c.sort_order), COALESCE(p.name, c.name), c.parent_id IS NOT NULL, c.sort_order, c.name";
         return $this->pdo->query($sql)->fetchAll();
     }
 

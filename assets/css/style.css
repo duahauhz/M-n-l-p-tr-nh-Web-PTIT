@@ -270,6 +270,28 @@ a:hover {
     background: #FFF5F2;
 }
 
+/* Categories table */
+.category-name-cell {
+    min-width: 220px;
+    white-space: normal;
+}
+
+.category-name {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.category-name-cell strong {
+    display: inline-block;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.category-name.is-child strong {
+    color: var(--shopee-text);
+}
+
 /* === BADGES === */
 .badge {
     font-weight: 500;
@@ -408,6 +430,78 @@ a:hover {
     }
     .stat-card .stat-value {
         font-size: 22px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .category-table {
+        min-width: 0;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+    .category-table thead {
+        display: none;
+    }
+
+    .category-table,
+    .category-table tbody,
+    .category-table tr,
+    .category-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .category-table tr {
+        background: #FFFFFF;
+        border: 1px solid var(--shopee-border);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .category-table td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--shopee-border);
+        text-align: right;
+        white-space: normal;
+    }
+
+    .category-table td:last-child {
+        border-bottom: 0;
+    }
+
+    .category-table td::before {
+        flex: 0 0 42%;
+        color: var(--shopee-text-light);
+        font-size: 12px;
+        font-weight: 600;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    .category-table td:nth-child(1)::before { content: "#"; }
+    .category-table td:nth-child(2)::before { content: "Danh mục"; }
+    .category-table td:nth-child(3)::before { content: "Danh mục cha"; }
+    .category-table td:nth-child(4)::before { content: "Sản phẩm"; }
+    .category-table td:nth-child(5)::before { content: "Thứ tự"; }
+    .category-table td:nth-child(6)::before { content: "Trạng thái"; }
+    .category-table td:nth-child(7)::before { content: "Hành động"; }
+
+    .category-table td.category-name-cell {
+        align-items: flex-start;
+    }
+
+    .category-table td.category-name-cell .category-name {
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .category-table td.category-name-cell strong {
+        text-align: right;
     }
 }
 

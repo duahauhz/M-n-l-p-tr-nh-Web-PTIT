@@ -11,7 +11,7 @@
 <div class="card">
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-hover mb-0">
+            <table class="table table-hover mb-0 category-table">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -26,24 +26,23 @@
                 <tbody>
                     <?php foreach ($categories as $i => $c): ?>
                     <tr>
-                        <td><?= $i + 1 ?></td>
-                        <td>
-                            <?php if ($c['parent_id']): ?>
-                                <span class="text-muted ms-3">└</span>
-                            <?php endif; ?>
-                            <strong><?= e($c['name']) ?></strong>
+                        <td data-label="#"><?= $i + 1 ?></td>
+                        <td class="category-name-cell" data-label="Danh mục">
+                            <div class="category-name <?= $c['parent_id'] ? 'is-child' : '' ?>">
+                                <strong><?= e($c['name']) ?></strong>
+                            </div>
                         </td>
-                        <td><?= $c['parent_name'] ? e($c['parent_name']) : '<span class="text-muted">—</span>' ?></td>
-                        <td><span class="badge bg-light text-dark"><?= $c['product_count'] ?></span></td>
-                        <td><?= $c['sort_order'] ?></td>
-                        <td>
+                        <td class="text-nowrap" data-label="Danh mục cha"><?= $c['parent_name'] ? e($c['parent_name']) : '<span class="text-muted">—</span>' ?></td>
+                        <td data-label="Sản phẩm"><span class="badge bg-light text-dark"><?= $c['product_count'] ?></span></td>
+                        <td data-label="Thứ tự"><?= $c['sort_order'] ?></td>
+                        <td data-label="Trạng thái">
                             <?php if ($c['is_active']): ?>
                                 <span class="badge bg-success">Hoạt động</span>
                             <?php else: ?>
                                 <span class="badge bg-secondary">Ẩn</span>
                             <?php endif; ?>
                         </td>
-                        <td>
+                        <td class="text-nowrap category-actions" data-label="Hành động">
                             <a href="index.php?page=categories&action=edit&id=<?= $c['id'] ?>" class="btn btn-sm btn-outline-primary btn-action"><i class="fas fa-edit"></i></a>
                             <form method="POST" action="index.php?page=categories&action=delete" class="d-inline" id="del-cat-<?= $c['id'] ?>">
                                 <?= csrfField() ?>

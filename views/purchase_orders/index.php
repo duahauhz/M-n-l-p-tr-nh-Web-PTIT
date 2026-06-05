@@ -34,28 +34,28 @@
     <div class="card-body p-0">
         <?php if (!empty($result['data'])): ?>
         <div class="table-responsive">
-            <table class="table table-hover mb-0">
+            <table class="table table-hover mb-0" style="min-width: 900px;">
                 <thead>
                     <tr>
-                        <th>Mã đơn</th>
-                        <th>Nhà cung cấp</th>
-                        <th>Tổng tiền</th>
-                        <th>Trạng thái</th>
-                        <th>Ngày tạo</th>
-                        <th>Người tạo</th>
-                        <th>Hành động</th>
+                        <th class="text-nowrap">Mã đơn</th>
+                        <th class="text-nowrap">Nhà cung cấp</th>
+                        <th class="text-nowrap">Tổng tiền</th>
+                        <th class="text-nowrap">Trạng thái</th>
+                        <th class="text-nowrap">Ngày tạo</th>
+                        <th class="text-nowrap">Người tạo</th>
+                        <th class="text-nowrap">Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($result['data'] as $o): ?>
                     <tr>
-                        <td><a href="index.php?page=purchase_orders&action=show&id=<?= $o['id'] ?>"><code><?= e($o['order_code']) ?></code></a></td>
+                        <td class="text-nowrap"><a href="index.php?page=purchase_orders&action=show&id=<?= $o['id'] ?>"><code><?= e($o['order_code']) ?></code></a></td>
                         <td><?= e($o['supplier_name']) ?></td>
-                        <td class="fw-semibold"><?= formatMoney($o['total_amount']) ?></td>
-                        <td><span class="badge <?= PO_STATUS_BADGES[$o['status']] ?>"><?= PO_STATUS_LABELS[$o['status']] ?></span></td>
-                        <td><?= formatDate($o['created_at']) ?></td>
-                        <td><?= e($o['created_by_name']) ?></td>
-                        <td>
+                        <td class="text-nowrap fw-semibold"><?= formatMoney($o['total_amount']) ?></td>
+                        <td class="text-nowrap"><span class="badge <?= PO_STATUS_BADGES[$o['status']] ?>"><?= PO_STATUS_LABELS[$o['status']] ?></span></td>
+                        <td class="text-nowrap"><?= formatDate($o['created_at']) ?></td>
+                        <td class="text-nowrap"><?= e($o['created_by_name']) ?></td>
+                        <td class="text-nowrap">
                             <a href="index.php?page=purchase_orders&action=show&id=<?= $o['id'] ?>" class="btn btn-sm btn-outline-info btn-action"><i class="fas fa-eye"></i></a>
                             <?php if ($o['status'] === 'received'): ?>
                             <a href="index.php?page=reports&action=print_order&id=<?= $o['id'] ?>" class="btn btn-sm btn-outline-secondary btn-action" target="_blank"><i class="fas fa-print"></i></a>

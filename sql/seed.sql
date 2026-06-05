@@ -1,19 +1,17 @@
--- =============================================
+
 -- SupplierHub - Dữ liệu mẫu (Seed Data)
--- =============================================
+
 
 USE supplierhub;
 
--- =============================================
+
 -- Users (chỉ admin - mật khẩu mặc định: 123456)
--- =============================================
+
 INSERT INTO users (username, email, password_hash, full_name, phone) VALUES
 ('admin', 'admin@supplierhub.vn', '$2y$12$kf2OCDfEjRmJeXUnJTMYxekm4LE1rLZ3y0Dfl1KxkShWuoeplfsDu', 'Nguyễn Văn Admin', '0901000001');
 
 
--- =============================================
 -- Suppliers - 10 nhà cung cấp
--- =============================================
 INSERT INTO suppliers (company_name, contact_person, email, phone, address, tax_code, status, rating_avg, notes) VALUES
 ('Công ty TNHH Thiết Bị Văn Phòng Hòa Phát', 'Nguyễn Minh Tuấn', 'tuannm@hoaphat-vp.vn', '028-3822-1100', '45 Nguyễn Trãi, Q.1, TP.HCM', '0301234567', 'active', 4.50, 'NCC uy tín, giao hàng đúng hẹn'),
 ('CTCP Công Nghệ Phần Mềm FPT', 'Trần Đức Hùng', 'hungtd@fpt.com.vn', '024-7300-7300', '17 Duy Tân, Cầu Giấy, Hà Nội', '0105678901', 'active', 4.75, 'Cung cấp thiết bị CNTT chất lượng cao'),
@@ -31,9 +29,8 @@ INSERT INTO suppliers (company_name, contact_person, email, phone, address, tax_
 ('Nhà cung cấp Demo 14 (Trang 2)', 'Nguyễn Văn D', 'demo14@ncc.vn', '0904444444', 'Hải Phòng', '4444444444', 'active', 4.50, 'Dữ liệu thêm để test phân trang'),
 ('Nhà cung cấp Demo 15 (Trang 2)', 'Nguyễn Văn E', 'demo15@ncc.vn', '0905555555', 'Nha Trang', '5555555555', 'active', 4.80, 'Dữ liệu thêm để test phân trang');
 
--- =============================================
 -- Categories - Danh mục
--- =============================================
+
 INSERT INTO categories (name, slug, description, parent_id, sort_order, is_active) VALUES
 ('Thiết bị văn phòng', 'thiet-bi-van-phong', 'Bàn, ghế, tủ và thiết bị văn phòng', NULL, 1, 1),
 ('Thiết bị CNTT', 'thiet-bi-cntt', 'Máy tính, máy in, thiết bị mạng', NULL, 2, 1),
@@ -46,9 +43,7 @@ INSERT INTO categories (name, slug, description, parent_id, sort_order, is_activ
 ('Máy in & Scanner', 'may-in-scanner', 'Máy in, máy scan, máy photocopy', 2, 3, 1),
 ('Giấy in', 'giay-in', 'Giấy A4, A3, giấy đặc biệt', 3, 1, 1);
 
--- =============================================
--- Products - 30 sản phẩm
--- =============================================
+    -- Products - 30 sản phẩm
 INSERT INTO products (supplier_id, category_id, name, sku, description, unit_price, unit, status, min_stock_level) VALUES
 -- NCC 1: Hòa Phát - Thiết bị văn phòng
 (1, 1, 'Bàn làm việc Hòa Phát SV1200', 'HP-BAN-001', 'Bàn gỗ công nghiệp 1200x600x750mm, chân sắt sơn tĩnh điện', 1250000.00, 'cái', 'active', 5),
@@ -99,9 +94,7 @@ INSERT INTO products (supplier_id, category_id, name, sku, description, unit_pri
 (10, 4, 'Gioăng cao su O-ring D50', 'CS-GR-001', 'Gioăng O-ring NBR, D50 x 5mm, 100 cái/gói', 250000.00, 'gói', 'active', 20),
 (10, 4, 'Băng tải cao su EP100', 'CS-BT-001', 'Băng tải cao su 2 lớp EP100, rộng 500mm', 4500000.00, 'mét', 'active', 10);
 
--- =============================================
 -- Inventory - Tồn kho ban đầu
--- =============================================
 INSERT INTO inventory (product_id, quantity_on_hand, quantity_reserved) VALUES
 (1, 12, 0), (2, 25, 2), (3, 8, 0),
 (4, 6, 1), (5, 4, 0), (6, 3, 0),
@@ -114,9 +107,7 @@ INSERT INTO inventory (product_id, quantity_on_hand, quantity_reserved) VALUES
 (24, 200, 20), (25, 350, 30), (26, 45, 0),
 (27, 7, 0), (28, 30, 5), (29, 3, 0);
 
--- =============================================
 -- Purchase Orders - Đơn hàng mẫu
--- =============================================
 INSERT INTO purchase_orders (order_code, supplier_id, created_by, approved_by, status, total_amount, notes, expected_delivery, actual_delivery, created_at) VALUES
 ('PO-20260301-001', 1, 1, 1, 'received', 15500000.00, 'Đơn bổ sung nội thất văn phòng', '2026-03-10', '2026-03-09', '2026-03-01 09:00:00'),
 ('PO-20260305-001', 2, 1, 1, 'received', 37500000.00, 'Mua máy tính cho phòng kế toán', '2026-03-15', '2026-03-14', '2026-03-05 10:30:00'),
@@ -127,9 +118,8 @@ INSERT INTO purchase_orders (order_code, supplier_id, created_by, approved_by, s
 ('PO-20260405-001', 3, 1, NULL, 'pending', 6400000.00, 'Bổ sung màn hình', '2026-04-15', NULL, '2026-04-05 16:00:00'),
 ('PO-20260410-001', 4, 1, 1, 'approved', 3780000.00, 'Vật tư ống nước dự án A', '2026-04-18', NULL, '2026-04-10 07:45:00');
 
--- =============================================
+
 -- Purchase Order Items
--- =============================================
 INSERT INTO purchase_order_items (purchase_order_id, product_id, quantity_ordered, quantity_received, unit_price, subtotal) VALUES
 -- PO1: Nội thất Hòa Phát
 (1, 1, 5, 5, 1250000.00, 6250000.00),
@@ -155,9 +145,8 @@ INSERT INTO purchase_order_items (purchase_order_id, product_id, quantity_ordere
 (8, 10, 100, 0, 28000.00, 2800000.00),
 (8, 11, 30, 0, 35000.00, 1050000.00);
 
--- =============================================
+
 -- Supplier Reviews - Đánh giá mẫu
--- =============================================
 INSERT INTO supplier_reviews (supplier_id, user_id, purchase_order_id, rating_quality, rating_delivery, rating_price, rating_service, comment) VALUES
 (1, 1, 1, 5, 4, 4, 5, 'Hàng chất lượng tốt, giao sớm 1 ngày. Giá hợp lý.'),
 (2, 1, 2, 5, 5, 4, 5, 'Máy tính chạy ổn định, hỗ trợ bảo hành rất tốt.'),
@@ -165,9 +154,8 @@ INSERT INTO supplier_reviews (supplier_id, user_id, purchase_order_id, rating_qu
 (1, 1, NULL, 4, 5, 4, 4, 'NCC đáng tin cậy, phản hồi nhanh.'),
 (3, 1, NULL, 4, 4, 3, 5, 'Hàng Samsung chính hãng nhưng giá hơi cao.');
 
--- =============================================
+
 -- Audit Logs - Nhật ký mẫu
--- =============================================
 INSERT INTO audit_logs (user_id, action, table_name, record_id, ip_address, created_at) VALUES
 (1, 'CREATE', 'suppliers', 1, '127.0.0.1', '2026-02-15 08:00:00'),
 (1, 'CREATE', 'suppliers', 2, '127.0.0.1', '2026-02-15 08:05:00'),
@@ -175,9 +163,7 @@ INSERT INTO audit_logs (user_id, action, table_name, record_id, ip_address, crea
 (1, 'UPDATE', 'purchase_orders', 1, '127.0.0.1', '2026-03-02 10:00:00'),
 (1, 'UPDATE', 'purchase_orders', 1, '127.0.0.1', '2026-03-09 14:00:00');
 
--- =============================================
 -- Settings - Cấu hình
--- =============================================
 INSERT INTO settings (setting_key, setting_value, description) VALUES
 ('site_name', 'SupplierHub', 'Tên hệ thống'),
 ('currency', 'VND', 'Đơn vị tiền tệ'),

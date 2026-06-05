@@ -32,26 +32,34 @@
 <div class="card">
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-hover table-sm mb-0">
+            <table class="table table-hover table-sm mb-0" style="min-width: 900px;">
                 <thead>
-                    <tr><th>Thời gian</th><th>Người dùng</th><th>Hành động</th><th>Bảng</th><th>ID</th><th>IP</th><th>Chi tiết</th></tr>
+                    <tr>
+                        <th class="text-nowrap">Thời gian</th>
+                        <th class="text-nowrap">Người dùng</th>
+                        <th class="text-nowrap">Hành động</th>
+                        <th class="text-nowrap">Bảng</th>
+                        <th class="text-nowrap">ID</th>
+                        <th class="text-nowrap">IP</th>
+                        <th class="text-nowrap">Chi tiết</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($result['data'] as $log): ?>
                     <tr>
-                        <td><small><?= formatDate($log['created_at'], true) ?></small></td>
-                        <td><?= e($log['user_name'] ?? 'System') ?></td>
-                        <td>
+                        <td class="text-nowrap"><small><?= formatDate($log['created_at'], true) ?></small></td>
+                        <td class="text-nowrap"><?= e($log['user_name'] ?? 'System') ?></td>
+                        <td class="text-nowrap">
                             <?php
                             $actionColors = ['CREATE'=>'success','UPDATE'=>'primary','DELETE'=>'danger','LOGIN'=>'info','LOGOUT'=>'secondary'];
                             $color = $actionColors[$log['action']] ?? 'dark';
                             ?>
                             <span class="badge bg-<?= $color ?>"><?= e($log['action']) ?></span>
                         </td>
-                        <td><code><?= e($log['table_name']) ?></code></td>
-                        <td><?= $log['record_id'] ?? '—' ?></td>
-                        <td><small class="text-muted"><?= e($log['ip_address']) ?></small></td>
-                        <td>
+                        <td class="text-nowrap"><code><?= e($log['table_name']) ?></code></td>
+                        <td class="text-nowrap"><?= $log['record_id'] ?? '—' ?></td>
+                        <td class="text-nowrap"><small class="text-muted"><?= e($log['ip_address']) ?></small></td>
+                        <td class="text-nowrap">
                             <?php if ($log['new_data']): ?>
                             <button class="btn btn-sm btn-outline-secondary" onclick="alert(this.getAttribute('data-detail'))"
                                     data-detail="<?= e($log['new_data']) ?>"><i class="fas fa-eye"></i></button>

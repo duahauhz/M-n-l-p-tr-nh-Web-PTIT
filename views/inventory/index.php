@@ -25,35 +25,35 @@
     <div class="card-body p-0">
         <?php if (!empty($result['data'])): ?>
         <div class="table-responsive">
-            <table class="table table-hover mb-0">
+            <table class="table table-hover mb-0" style="min-width: 1100px;">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>SKU</th>
-                        <th>Sản phẩm</th>
-                        <th>NCC</th>
-                        <th>Đơn giá</th>
-                        <th>Tồn kho</th>
-                        <th>Đã đặt</th>
-                        <th>Mức min</th>
-                        <th>Giá trị</th>
-                        <th>Trạng thái</th>
+                        <th class="text-nowrap">#</th>
+                        <th class="text-nowrap">SKU</th>
+                        <th class="text-nowrap">Sản phẩm</th>
+                        <th class="text-nowrap">NCC</th>
+                        <th class="text-nowrap">Đơn giá</th>
+                        <th class="text-nowrap">Tồn kho</th>
+                        <th class="text-nowrap">Đã đặt</th>
+                        <th class="text-nowrap">Mức min</th>
+                        <th class="text-nowrap">Giá trị</th>
+                        <th class="text-nowrap">Trạng thái</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($result['data'] as $i => $item): ?>
                     <?php $isLow = $item['quantity_on_hand'] <= $item['min_stock_level']; ?>
                     <tr class="<?= $isLow ? 'table-warning' : '' ?>">
-                        <td><?= ($result['page'] - 1) * $result['limit'] + $i + 1 ?></td>
-                        <td><code><?= e($item['sku']) ?></code></td>
+                        <td class="text-nowrap"><?= ($result['page'] - 1) * $result['limit'] + $i + 1 ?></td>
+                        <td class="text-nowrap"><code><?= e($item['sku']) ?></code></td>
                         <td><?= e($item['name']) ?></td>
                         <td><small><?= e($item['supplier_name']) ?></small></td>
-                        <td><?= formatMoney($item['unit_price']) ?></td>
-                        <td class="fw-bold <?= $isLow ? 'text-danger' : 'text-success' ?>"><?= $item['quantity_on_hand'] ?> <?= e($item['unit']) ?></td>
-                        <td><?= $item['quantity_reserved'] ?></td>
-                        <td><?= $item['min_stock_level'] ?></td>
-                        <td><?= formatMoney($item['quantity_on_hand'] * $item['unit_price']) ?></td>
-                        <td>
+                        <td class="text-nowrap"><?= formatMoney($item['unit_price']) ?></td>
+                        <td class="text-nowrap fw-bold <?= $isLow ? 'text-danger' : 'text-success' ?>"><?= $item['quantity_on_hand'] ?> <?= e($item['unit']) ?></td>
+                        <td class="text-nowrap"><?= $item['quantity_reserved'] ?></td>
+                        <td class="text-nowrap"><?= $item['min_stock_level'] ?></td>
+                        <td class="text-nowrap"><?= formatMoney($item['quantity_on_hand'] * $item['unit_price']) ?></td>
+                        <td class="text-nowrap">
                             <?php if ($item['quantity_on_hand'] == 0): ?>
                                 <span class="badge bg-danger">Hết hàng</span>
                             <?php elseif ($isLow): ?>

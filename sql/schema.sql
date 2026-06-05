@@ -1,16 +1,14 @@
--- =============================================
+
 -- SupplierHub Database Schema (Đã tinh gọn)
 -- Hệ thống quản lý nhà cung cấp
--- =============================================
 
 SET NAMES utf8mb4;
 SET CHARACTER SET utf8mb4;
 
 USE supplierhub;
 
--- =============================================
 -- 1. Bảng USERS - Quản lý tài khoản (chỉ admin)
--- =============================================
+
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
@@ -23,9 +21,9 @@ CREATE TABLE IF NOT EXISTS users (
     INDEX idx_active (is_active)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================
+
 -- 2. Bảng SUPPLIERS - Nhà cung cấp
--- =============================================
+
 CREATE TABLE IF NOT EXISTS suppliers (
     id INT AUTO_INCREMENT PRIMARY KEY,
     company_name VARCHAR(200) NOT NULL,
@@ -41,10 +39,10 @@ CREATE TABLE IF NOT EXISTS suppliers (
     INDEX idx_status (status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================
+
 -- 3. Bảng CATEGORIES - Danh mục sản phẩm
 -- Hỗ trợ danh mục con (parent_id)
--- =============================================
+
 CREATE TABLE IF NOT EXISTS categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -58,9 +56,9 @@ CREATE TABLE IF NOT EXISTS categories (
     INDEX idx_active (is_active)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================
+
 -- 4. Bảng PRODUCTS - Sản phẩm
--- =============================================
+
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     supplier_id INT NOT NULL,
@@ -81,9 +79,9 @@ CREATE TABLE IF NOT EXISTS products (
     INDEX idx_sku (sku)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================
+
 -- 5. Bảng INVENTORY - Tồn kho
--- =============================================
+
 CREATE TABLE IF NOT EXISTS inventory (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT NOT NULL UNIQUE,
@@ -94,10 +92,10 @@ CREATE TABLE IF NOT EXISTS inventory (
     INDEX idx_product (product_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================
+
 -- 6. Bảng PURCHASE_ORDERS - Đơn đặt hàng mua
 -- Workflow: draft → pending → approved → received → cancelled
--- =============================================
+
 CREATE TABLE IF NOT EXISTS purchase_orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_code VARCHAR(20) NOT NULL UNIQUE,
@@ -118,9 +116,9 @@ CREATE TABLE IF NOT EXISTS purchase_orders (
     INDEX idx_created_by (created_by)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================
+
 -- 7. Bảng PURCHASE_ORDER_ITEMS - Chi tiết đơn hàng
--- =============================================
+
 CREATE TABLE IF NOT EXISTS purchase_order_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     purchase_order_id INT NOT NULL,
@@ -135,9 +133,9 @@ CREATE TABLE IF NOT EXISTS purchase_order_items (
     INDEX idx_product (product_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================
+
 -- 8. Bảng SUPPLIER_REVIEWS - Đánh giá NCC
--- =============================================
+
 CREATE TABLE IF NOT EXISTS supplier_reviews (
     id INT AUTO_INCREMENT PRIMARY KEY,
     supplier_id INT NOT NULL,
@@ -156,9 +154,9 @@ CREATE TABLE IF NOT EXISTS supplier_reviews (
     INDEX idx_user (user_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================
+
 -- 9. Bảng AUDIT_LOGS - Nhật ký hoạt động (tinh gọn)
--- =============================================
+
 CREATE TABLE IF NOT EXISTS audit_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT DEFAULT NULL,
@@ -173,9 +171,9 @@ CREATE TABLE IF NOT EXISTS audit_logs (
     INDEX idx_created (created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =============================================
+
 -- 10. Bảng SETTINGS - Cấu hình hệ thống (tinh gọn)
--- =============================================
+
 CREATE TABLE IF NOT EXISTS settings (
     setting_key VARCHAR(50) NOT NULL PRIMARY KEY,
     setting_value TEXT DEFAULT NULL,

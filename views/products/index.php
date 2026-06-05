@@ -41,7 +41,7 @@
     <div class="card-body p-0">
         <?php if (!empty($result['data'])): ?>
         <div class="table-responsive">
-            <table class="table table-hover mb-0">
+            <table class="table table-hover mb-0" style="min-width: 1000px;">
                 <thead>
                     <tr>
                         <th>#</th>
